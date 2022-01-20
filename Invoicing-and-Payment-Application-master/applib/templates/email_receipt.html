@@ -1,0 +1,44 @@
+{% extends "email_body.html" %}
+
+{% block body %}
+
+<p>Hi {{name}}, <br />
+	<br />
+	A new {{type}} has been generated for you by Ecardex Ventures. Here's a quick summary:<br />
+	<br />
+
+	{% for x in items %}
+
+	{{ x.item_desc | title }}  :  Amount {{ cur_fmt(x.amount)}} <br/>
+
+	{% endfor %}
+
+	<hr/> 
+	<br /> 
+	
+	<h3 class="text-center" style="font-weight: lighter;"> 
+		Payment Description 
+	</h3>
+	Amount Paid: {{ cur_fmt(amount_paid) }} {{ currency }} 
+
+	<br/>
+	
+	Amount to Balance: {{ cur_fmt(amount_balance) }} {{ currency }}  
+	
+	<br />
+
+	Total Amount: {{ cur_fmt(total) }} {{ currency }}  <br />
+
+
+	<br />
+
+	A PDF copy of it has been added as an attachment <br/>
+	<br />
+
+
+	Best regards,<br />
+	Ecardex Ventures
+
+</p>
+
+{% endblock %}

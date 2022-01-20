@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>email_body</title>  
+</head>
+
+<body style="margin: 0; padding: 0; -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:none;">
+<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="margin:0;padding:0;background-color:#d7d7d9;border-collapse:collapse;height:100%;width:100%">
+   <tbody>
+      <tr>
+         <td align="center" valign="top" style="margin:0;padding:15px 5px;height:100%;width:100%">
+            <table border="0" cellpadding="0" cellspacing="0" style="width:600px;border-collapse:collapse">
+               <tbody>
+                  <tr>
+                     <td align="center" valign="top">
+						
+						{% block header %}
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff;border-bottom:0px solid #cccccc;border-collapse:collapse">
+                           <tbody>
+                              <tr>
+                                 <td valign="top" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px;color:#808080;font-family:Helvetica;font-size:10px;line-height:125%;text-align:left">
+                                    Ecardex Ventures
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        {% endblock %}
+
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center" valign="top">
+						{% block logo %}
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#363B4D;border-top:0px solid #ffffff;border-collapse:collapse">
+                           <tbody>
+                              <tr>
+                                 <td valign="top" style="color:#ffffff;font-family:Helvetica;font-size:20px;font-weight:bold;line-height:100%;padding-top:20px;padding-right:45px;padding-bottom:20px;padding-left:45px;text-align:center;vertical-align:middle">
+                                    <a href="www.ecardex.com">
+                                    <!-- https://invoicely.com/images/mail/invoicely_mail_icon.png -->
+                                    <img draggable="false" src="https://apilayer-user-file-uploads.s3.amazonaws.com/7fbb8277c3be1e766549ec7a1eeb5260_LOGO+TRANSPARENT.png" alt="Ecardex Ventures" width="160" style="margin: 0 auto;display: block;" />
+                                    </a>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     	{% endblock %}
+
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center" valign="top">
+                     	
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#ffffff;border-top:0px solid #ffffff;border-bottom:0px solid #cccccc;border-collapse:collapse">
+                           <tbody>
+                              <tr>
+                                 <td valign="top" style="color:#505050;font-family:Helvetica;font-size:14px;line-height:150%;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;text-align:left">
+                                	{% block body %}    
+	
+	                                    <p>Hi {{name}}, <br />
+										<br />
+										A new {{type}} has been generated for you by Ecardex Ventures. Here's a quick summary:<br />
+										<br />
+
+										{% for x in items %}
+
+										{{ x.item_desc | title }}  :  Amount {{ cur_fmt(x.amount)}} <br/>
+
+										{% endfor %}
+
+
+										<br />
+
+										{% if discount %}
+										Discount Applied :  {{ cur_fmt(discount) }}
+										{% endif %}
+
+										<br />
+
+										Total Amount:   <b> {{ cur_fmt(total) }} {{ currency }} </b>  <br />
+
+
+										<br />
+
+
+										A PDF copy of it has been added as an attachment <br/>
+										<br />
+
+
+										Best regards,<br />
+										Ecardex Ventures
+
+                                    </p>
+                                    {% endblock %}
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+
+                       
+
+                     </td>
+                  </tr>
+                  <tr>
+                     <td align="center" valign="top">
+                     	{% block footer %}
+
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#eeeeee;border-top:0px solid #ffffff;border-collapse:collapse">
+                           <tbody>
+                              <tr>
+                                 <td valign="top" style="color:#808080;font-family:Helvetica;font-size:12px;line-height:150%;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;text-align:left">
+                                    <div style="float: left; vertical-align:top;">
+                                       <a style="color:#808080;" target="_blank" href="www.ecardex.com">Ecardex Ventures</a>
+                                       <br>
+                                       08, ladipo kuku street, Opebi road, 23401 Ikeja, Lagos, NG
+                                    </div>
+                                    <a href="mailto:support@ecardex.com" style="float: right; text-decoration: none; background: #ff6633;color: #fff;padding: 5px 10px;border: 0px solid #ff6633; border-radius: 2px;">Contact Us</a><wbr>&nbsp;
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+						<img src="{{status_link or ''}}" height="1" width="1">
+
+                        {% endblock %}
+
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+  			</a>
+         </td>
+      </tr>
+   </tbody>
+</table>
+</body>
+</html>
+
+
+
+
+</body>
+</html>

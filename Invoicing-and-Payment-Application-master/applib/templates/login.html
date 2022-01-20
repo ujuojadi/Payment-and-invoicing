@@ -1,0 +1,70 @@
+
+{% extends 'base.html' %}
+
+{% block side_menu %}
+{% endblock %}
+
+{% block main %}
+
+	<style>
+
+		input {
+			margin-bottom: 2%;
+		}
+
+		button {
+			float: left;
+			margin-top: 1%;
+			width: 100px;
+			height: 40px;
+		}
+
+		#form_title{
+			text-align: center;
+		}
+
+	</style>
+	<div class="container" style="margin-top: 7%">
+
+		<div class="row">
+
+			<div class="col-md-6 offset-md-3">
+			
+				<form action="" method="post">
+					<div>
+						<h3 class="mb-5 header_text"><b> LOGIN </b></h3>
+					</div>
+					{% for field in form %}
+						<div>
+
+							<b>{{ field.label }}</b>
+							{{ field }}	
+
+						</div>
+					{% endfor %}
+			
+						{% with messages = get_flashed_messages() %}
+							{% if messages %}
+								{% for message in messages %}
+				       				<span class="text-danger" role="alert" style="font-size: 14px"> 
+				       					<ul><li>{{ message }}</li></ul> 
+				       				</span>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+
+					<div>
+						<hr style="margin-top: 35px">
+						<button type="submit" class="btn btn-success" style="width: 100%; margin-bottom: 7px; margin-top: 5px"> Login </button>
+					</div>
+
+				</form>
+			</div>
+			
+			</div>
+			
+		</div>
+		
+	</div>
+
+{% endblock %}

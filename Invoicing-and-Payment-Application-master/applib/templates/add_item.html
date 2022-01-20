@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block in_styles %}
+
+	input {
+		margin-bottom: 2%;
+	}
+	
+{% endblock %}
+
+{% block main %} 
+	<div class="col-md-6 offset-md-3">
+		<h3 class="mb-5 header_text"><b> CREATE NEW ITEM </b></h3>
+		<form action="" method="post">
+
+			 {{form_layout(form) }}
+			
+			<br>
+			<hr>
+			<div class="row">  
+				<div class="col-md-6">
+					{% set link = url_for('invoice.index') %}
+					<a class="btn btn-block btn_cl btn-default" 
+						href="{{link}}"> Back 
+					</a>
+				</div>
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-success btn-block"> Add Items </button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+			  
+{% endblock %}
+
+{% block scripts %}
+	
+	var quantity = document.getElementById("qty");
+	var rate = document.getElementById("rate");
+
+	rate.addEventListener("keyup", calculate);
+	quantity.addEventListener("keyup", calculate);
+
+	function calculate(){
+		var displayAmount = 0;
+		
+		displayAmount = Number(quantity.value) * Number(rate.value);
+		document.getElementById("amt").value = displayAmount;
+	}
+
+{% endblock %}
